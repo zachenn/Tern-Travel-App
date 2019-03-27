@@ -55,7 +55,6 @@ class MapModel {
 				
 				// update map
 				let annotation = DestinationAnnotation(objectUUID: place.objectUUID!, coordinate: CLLocationCoordinate2DMake((place.coordinate?.latitude)!, (place.coordinate?.longitude)!), title: place.annotationTitle!, subtitle: place.annotationSubtitle!, type: DestinationType(rawValue: place.destinationType!)!)
-//				let annotation = DestinationAnnotation(annotationListItem: place)
 				mapView.addAnnotation(annotation)
 				mapPlaces.append(annotation)
 			}
@@ -66,7 +65,7 @@ class MapModel {
 	
 	// MARK: DIRECTION METHODS
 	
-	// GET DIRECTIONS
+	// get directions
 	static func getDirections(mapItems: [MKMapItem]) {
 		let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDefault]
 		MKMapItem.openMaps(with: mapItems, launchOptions: launchOptions)
@@ -269,55 +268,51 @@ extension MapViewController: HandleMapSearch {
 			phoneNumber: phoneNumber,
 			url: url)
 		
-//		// Add the annotation under their UID selected collection
-//		if selectedCollection?.key != masterCollection?.key {
-//
-//			// add it to the selected collection
-//			FirestoreMethods.addPlaceUnderSelectedCollection(newPlace: annotationListItem.toAny() as! [String: Any]) {
-//				NotificationCenter.default.post(name: .placeAddedToCollection, object: nil)
-//			}
-//
-//			// add it to the countries group
-//			FirestoreMethods.addPlaceToCountriesCollection(country: country, state: state, city: city, newPlace: annotationListItem.toAny() as! [String: Any])
-//
-//			// add it to the master collection
-//			FirestoreMethods.addPlaceUnderMasterCollection(newPlace: annotationListItem.toAny() as! [String: Any]) {
-//				return
-//			}
-//
-//			// check if it exists in the master list
-////			if masterCollectionAnnotationListItems.filter({ $0.annotationSubtitle == subtitle }).isEmpty ||
-////				masterCollectionAnnotationListItems.filter({ $0.annotationTitle == title}).isEmpty ||
-////				(masterCollectionAnnotationListItems.filter({ $0.phoneNumber == phoneNumber }).isEmpty  ) ||
-////				(masterCollectionAnnotationListItems.filter({ $0.url == url }).isEmpty ) {
-////
-////				// add it to the master list if it doesn't exist				FirebaseMethods.addAnnotationToMasterListCollection(annotationListItem: annotationListItem)
-////				FirestoreMethods.addPlaceUnderMasterCollection(newPlace: annotationListItem.toAnyObject() as! [String: Any]) {
-////					return
-////				}
-////			}
-//
-//		} else {
-//
-//			// selectedCollection = masterCollection
-//			FirestoreMethods.addPlaceUnderSelectedCollection(newPlace: annotationListItem.toAny() as! [String: Any]) {
-//				NotificationCenter.default.post(name: .placeAddedToCollection, object: nil)
-//			}
-//		}
+		// Add the annotation under their UID selected collection
+		if selectedCollection?.key != masterCollection?.key {
+
+			// add it to the selected collection
+			FirestoreMethods.addPlaceUnderSelectedCollection(newPlace: annotationListItem.toAny() as! [String: Any]) {
+				NotificationCenter.default.post(name: .placeAddedToCollection, object: nil)
+			}
+
+			// add it to the countries group
+			FirestoreMethods.addPlaceToCountriesCollection(country: country, state: state, city: city, newPlace: annotationListItem.toAny() as! [String: Any])
+
+			// add it to the master collection
+			FirestoreMethods.addPlaceUnderMasterCollection(newPlace: annotationListItem.toAny() as! [String: Any]) {
+				return
+			}
+
+			// check if it exists in the master list
+			if masterCollectionAnnotationListItems.filter({ $0.annotationSubtitle == subtitle }).isEmpty ||
+				masterCollectionAnnotationListItems.filter({ $0.annotationTitle == title}).isEmpty ||
+				(masterCollectionAnnotationListItems.filter({ $0.phoneNumber == phoneNumber }).isEmpty  ) ||
+				(masterCollectionAnnotationListItems.filter({ $0.url == url }).isEmpty ) {
+
+				// add it to the master list if it doesn't exist				FirebaseMethods.addAnnotationToMasterListCollection(annotationListItem: annotationListItem)
+				FirestoreMethods.addPlaceUnderMasterCollection(newPlace: annotationListItem.toAnyObject() as! [String: Any]) {
+					return
+				}
+			}
+
+		} else {
+
+			// selectedCollection = masterCollection
+			FirestoreMethods.addPlaceUnderSelectedCollection(newPlace: annotationListItem.toAny() as! [String: Any]) {
+				NotificationCenter.default.post(name: .placeAddedToCollection, object: nil)
+			}
+		}
 		
 		// ADD THE PIN TO THE MAPVIEW
 		let annotation = DestinationAnnotation(objectUUID: annotationListItem.objectUUID!, coordinate: CLLocationCoordinate2DMake((annotationListItem.coordinate?.latitude)!, (annotationListItem.coordinate?.longitude)!), title: annotationListItem.annotationTitle!, subtitle: annotationListItem.annotationSubtitle!, type: DestinationType(rawValue: annotationListItem.destinationType!)!)
-		
-//		let annotation = DestinationAnnotation(annotationListItem: annotationListItem)
 		
 		mapView.mapView.addAnnotation(annotation)
 		let span = MKCoordinateSpanMake(0.01, 0.01)
 		let region = MKCoordinateRegionMake(annotation.coordinate, span)
 		mapView.mapView.setRegion(region, animated: true)
 		mapView.mapView.selectAnnotation(annotation, animated: true)
-//		allMapAnnotations.append(annotation)
-		temporaryMapAnnotations.append(annotation)
-		temporaryAnnotationList.append(annotationListItem)
+		allMapAnnotations.append(annotation)
 		
 		// first annotationItem added success state
 		if UserDefaults.standard.value(forKey: "firstAnnotationItemAdded") == nil {
@@ -363,16 +358,16 @@ extension MapViewController: HandleMapSearch {
 			}
 			
 			// check if it exists in the master list
-			//			if masterCollectionAnnotationListItems.filter({ $0.annotationSubtitle == subtitle }).isEmpty ||
-			//				masterCollectionAnnotationListItems.filter({ $0.annotationTitle == title}).isEmpty ||
-			//				(masterCollectionAnnotationListItems.filter({ $0.phoneNumber == phoneNumber }).isEmpty  ) ||
-			//				(masterCollectionAnnotationListItems.filter({ $0.url == url }).isEmpty ) {
-			//
-			//				// add it to the master list if it doesn't exist				FirebaseMethods.addAnnotationToMasterListCollection(annotationListItem: annotationListItem)
-			//				FirestoreMethods.addPlaceUnderMasterCollection(newPlace: annotationListItem.toAnyObject() as! [String: Any]) {
-			//					return
-			//				}
-			//			}
+			if masterCollectionAnnotationListItems.filter({ $0.annotationSubtitle == subtitle }).isEmpty ||
+				masterCollectionAnnotationListItems.filter({ $0.annotationTitle == title}).isEmpty ||
+				(masterCollectionAnnotationListItems.filter({ $0.phoneNumber == phoneNumber }).isEmpty  ) ||
+				(masterCollectionAnnotationListItems.filter({ $0.url == url }).isEmpty ) {
+
+				// add it to the master list if it doesn't exist				FirebaseMethods.addAnnotationToMasterListCollection(annotationListItem: annotationListItem)
+				FirestoreMethods.addPlaceUnderMasterCollection(newPlace: annotationListItem.toAnyObject() as! [String: Any]) {
+					return
+				}
+			}
 			
 		} else {
 			
@@ -394,38 +389,26 @@ extension MapViewController: MKMapViewDelegate {
 			return nil
 		}
 		
-		// SWEET TUTOS
-		var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "placeView")
+		// ORIGINAL
+		// custom annotationView and callout
+		let annotationView = DestinationAnnotationView(annotation: annotation, reuseIdentifier: "Attraction")
+		annotationView.canShowCallout = true
+		let smallSquare = CGSize(width: 30, height: 30)
 
-		if annotationView == nil {
-			annotationView = DestinationAnnotationView(annotation: annotation, reuseIdentifier: "placeView")
-			annotationView?.canShowCallout = false
-		} else {
-			annotationView?.annotation = annotation
-		}
+		// directionsButton
+		let directionsButton = UIButton(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: smallSquare))
+		directionsButton.setImage(UIImage(named: "car #079292"), for: .normal)
+		directionsButton.addTarget(self, action: #selector(MapViewController.getDirections), for: .touchUpInside)
+		annotationView.leftCalloutAccessoryView = directionsButton
+
+		// shareButton
+		let shareButton = UIButton(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: smallSquare))
+		shareButton.setImage(UIImage(named: "share #black"), for: .normal)
+		shareButton.tintColor = UIColor(red: 0.0275, green: 0.5725, blue: 0.5725, alpha: 0.8) /* #079292 */
+		shareButton.addTarget(self, action: #selector(MapViewController.shareTapped), for: .touchUpInside)
+		annotationView.rightCalloutAccessoryView = shareButton
 
 		return annotationView
-		
-		// ORIGINAL
-//		// custom annotationView and callout
-//		let annotationView = DestinationAnnotationView(annotation: annotation, reuseIdentifier: "Attraction")
-//		annotationView.canShowCallout = true
-//		let smallSquare = CGSize(width: 30, height: 30)
-//
-//		// directionsButton
-//		let directionsButton = UIButton(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: smallSquare))
-//		directionsButton.setImage(UIImage(named: "car #079292"), for: .normal)
-//		directionsButton.addTarget(self, action: #selector(MapViewController.getDirections), for: .touchUpInside)
-//		annotationView.leftCalloutAccessoryView = directionsButton
-//
-//		// shareButton
-//		let shareButton = UIButton(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: smallSquare))
-//		shareButton.setImage(UIImage(named: "share #black"), for: .normal)
-//		shareButton.tintColor = UIColor(red: 0.0275, green: 0.5725, blue: 0.5725, alpha: 0.8) /* #079292 */
-//		shareButton.addTarget(self, action: #selector(MapViewController.shareTapped), for: .touchUpInside)
-//		annotationView.rightCalloutAccessoryView = shareButton
-//
-//		return annotationView
 	}
 	
 	func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
@@ -433,78 +416,21 @@ extension MapViewController: MKMapViewDelegate {
 			return
 		}
 		
-		// SWEET TUTOS
-		
-		// create the callout view
-		let annotation = view.annotation as! DestinationAnnotation
-
-		if annotation.type != .temp {
-			let calloutView = PlaceCalloutView()
-
-			calloutView.configureView()
-			calloutView.mapViewController = self
-
-			// set the text for the callout view
-			calloutView.titleLabel.text = annotation.title
-			calloutView.subtitleLabel.text = annotation.subtitle
-
-			// set the location of the callout view
-			calloutView.translatesAutoresizingMaskIntoConstraints = false
-			view.addSubview(calloutView)
-
-			NSLayoutConstraint.activate([
-				calloutView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: view.calloutOffset.x),
-				calloutView.bottomAnchor.constraint(equalTo: view.topAnchor),
-				calloutView.widthAnchor.constraint(greaterThanOrEqualToConstant: calloutView.subtitleLabel.frame.width + 20),
-//				calloutView.widthAnchor.constraint(equalToConstant: calloutView.buttonBoxWidth),
-				calloutView.heightAnchor.constraint(equalToConstant: 45)
-				])
-
-			//		mapView.setCenter((view.annotation?.coordinate)!, animated: true)
-
-		} else {
-
-			let calloutView = TemporaryPlaceCalloutView()
-
-			calloutView.configureView()
-			calloutView.mapViewController = self
-
-			// set the text for the callout view
-//					calloutView.titleLabel.text = annotation.title
-//					calloutView.subtitleLabel.text = annotation.subtitle
-
-			// set the location of the callout view
-			calloutView.translatesAutoresizingMaskIntoConstraints = false
-			view.addSubview(calloutView)
-
-			NSLayoutConstraint.activate([
-				calloutView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: view.calloutOffset.x),
-				calloutView.bottomAnchor.constraint(equalTo: view.topAnchor),
-				//			calloutView.widthAnchor.constraint(greaterThanOrEqualToConstant: calloutView.subtitleLabel.frame.width + 20),
-				calloutView.widthAnchor.constraint(equalToConstant: calloutView.buttonBoxWidth),
-				calloutView.heightAnchor.constraint(equalToConstant: 45)
-				])
-
-			//		mapView.setCenter((view.annotation?.coordinate)!, animated: true)
-
-		}
-		
-		
 		// ORIGINAL
-//		// used for shareTapped
-//		let currentlySelectedAnnotation = view.annotation as! DestinationAnnotation
-//		self.selectedAnnotation = currentlySelectedAnnotation
-//
-//		// used for getdirections method
-//		let selectedLoc = view.annotation
-//		let selectedPlacemark = MKPlacemark(coordinate: (selectedLoc?.coordinate)!, addressDictionary: nil)
-//		let selectedMapItem = MKMapItem(placemark: selectedPlacemark)
-//
-//		selectedMapItem.name = (view.annotation?.title)!
-//
-//		self.mapItems = [selectedMapItem]
-//		self.selectedPin = selectedPlacemark
-//		uuidToDelete = currentlySelectedAnnotation.objectUUID
+		// used for shareTapped
+		let currentlySelectedAnnotation = view.annotation as! DestinationAnnotation
+		self.selectedAnnotation = currentlySelectedAnnotation
+
+		// used for getdirections method
+		let selectedLoc = view.annotation
+		let selectedPlacemark = MKPlacemark(coordinate: (selectedLoc?.coordinate)!, addressDictionary: nil)
+		let selectedMapItem = MKMapItem(placemark: selectedPlacemark)
+
+		selectedMapItem.name = (view.annotation?.title)!
+
+		self.mapItems = [selectedMapItem]
+		self.selectedPin = selectedPlacemark
+		uuidToDelete = currentlySelectedAnnotation.objectUUID
 	}
 	
 	func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
@@ -515,11 +441,6 @@ extension MapViewController: MKMapViewDelegate {
 		}
 	}
 }
-
-// you can extract a lot of data from this information (presented are a few examples)
-// print(location.altitude)
-// print(location.speed)
-
 
 
 
