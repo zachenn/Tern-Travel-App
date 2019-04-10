@@ -1,7 +1,7 @@
 # Tern
-Tern is a travel app that gives a holistic view of unfamiliar places, reduces time unnecessarily commuting back and forth, increases the number of POIs you can do in a day, and allows the creation and sharing of more efficient itineraries.
+Tern is an extensive travel app that gives a holistic view of unfamiliar places, reduces time unnecessarily commuting back and forth, increases the number of POIs you can do in a day, and allows the creation and sharing of more efficient itineraries.
 
-It is built in native iOS using Swift, UIKit, Firestore, Google Sign In, FBSDKCoreKit, MVC architecture, Cocoapods, GitHub, and “just in time” onboarding, an intuitive workflow, and animated transitions to enhance the UX. 
+It is built in native iOS using Swift, UIKit, Firestore (NoSQL), Google Sign In, FBSDKCoreKit, MVC architecture, Cocoapods, Git, and “just in time” onboarding, an intuitive workflow, and animated transitions to enhance the UX. 
 
 I've added the main files for the two views below. The rest of the code is located in a private repo and is available upon request.
 
