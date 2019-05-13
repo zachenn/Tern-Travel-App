@@ -28,7 +28,7 @@ I've added the main files for the two views below. The rest of the code is locat
 * *OAuth (Firebase Auth)*
 * *3rd party frameworks*
 * *Social media sign in SDKs (Google Sign In, FBSDKCoreKit)*
-* *"Just in time" onboarding, an intuitive workflow, and animated transitions*
+* *Contextual onboarding, an intuitive workflow, and animated transitions*
 
 ### Security
 * *OAuth (Firebase Auth)*
