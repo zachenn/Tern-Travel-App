@@ -1,9 +1,37 @@
-# Tern
-Tern is an extensive travel app that gives a holistic view of unfamiliar places, reduces time unnecessarily commuting back and forth, increases the number of POIs you can do in a day, and allows the creation and sharing of more efficient itineraries.
+# Tern Travel App
 
-It is built in native iOS using Swift, UIKit, Firestore (NoSQL), Google Sign In, FBSDKCoreKit, MVC architecture, Cocoapods, Git, and “just in time” onboarding, an intuitive workflow, and animated transitions to enhance the UX. 
+## Overview
+Tern is an extensive travel app that gives a holistic view of unfamiliar places, reduces time unnecessarily commuting back and forth, increases the number of POIs you can complete in a day, and allows the creation and sharing of more efficient itineraries.
+
+It is built in native iOS using Swift as well as varying tools, frameworks, and design patterns that were selected to promote the long term scalability, maintainability, user experience, and security of the app. 
 
 I've added the main files for the two views below. The rest of the code is located in a private repo and is available upon request.
+
+## Selected Tools, Frameworks, and Design Patterns 
+
+<!-- (memory management, security), optionals, HTTP Requests --> 
+  
+### Scalability
+* *Firestore (NoSQL)* 
+    * Chosen over Core Data as the primary database so that i) the app occupies less memory on the user device and ii) user data is accessible and editable across devices 
+* *MVC architecture*
+
+### Maintainability
+* *90% Programmatic UI + Autolayout*
+* *10% Storyboard*
+* *MVC architecture*
+* *Git*
+* *Cocoapods*
+* *Unit tests*
+
+### User Experience
+* *OAuth (Firebase Auth)*
+* *3rd party frameworks*
+* *Social media sign in SDKs (Google Sign In, FBSDKCoreKit)*
+* *"Just in time" onboarding, an intuitive workflow, and animated transitions*
+
+### Security
+* *OAuth (Firebase Auth)*
 
 ## Samples of the basic use case of Tern
 
