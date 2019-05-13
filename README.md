@@ -33,13 +33,13 @@ I've added the main files for the two views below. The rest of the code is locat
 ### Security
 * *OAuth (Firebase Auth)*
 
-## Samples of the basic use case of Tern
+## Samples of the Basic Use Case of Tern
 
 This is a collection we created titled "Los Angeles"
 
 <img src="https://user-images.githubusercontent.com/27001034/54667137-d7faa680-4aa8-11e9-8c74-9945fd1f5bf2.JPG" width="350"> <img src="https://user-images.githubusercontent.com/27001034/54667152-e779ef80-4aa8-11e9-808c-7faf76e002e6.JPG" width="368">
 
-## Sample animations for an enhanced UX/UI
+## Sample Animations for an Enhanced UX/UI
 
 <img src="https://user-images.githubusercontent.com/27001034/55716889-f15a8880-59ac-11e9-884e-2b7a360a55c5.gif" width="300"> 
 <img src="https://user-images.githubusercontent.com/27001034/55716897-f4557900-59ac-11e9-972b-7ad3623bf42d.gif" width="300">  
