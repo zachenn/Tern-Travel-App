@@ -18,8 +18,8 @@ class ListCellView: UITableViewCell {
 		}
 	}
 	
-	var placeTitle = UILabel()
-	var placeAddress = UILabel()
+	private var placeTitle = UILabel()
+	private var placeAddress = UILabel()
 	
 	// MARK: - Initializers
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

@@ -16,18 +16,22 @@ class ListCellViewModel {
 	}
 	
 	// MARK: - Properties
-	let placeItem: PlaceItem?
+	var placeItem: PlaceItem?
 	
 	var placeTitle: String {
 		return placeItem?.placeTitle ?? ""
 	}
 	
 	var placeTitleColor: UIColor {
-		// FIXME: add in commented code
+		// FIXME: add in commented code and then add unit test for this property
 //		if selectedCollection?.key != masterCollection?.key && (annotationListItem?.completed!)! {
 //			return .lightGray
 //		}
 		return .black
+	}
+	
+	var placeType: Int {
+		return placeItem?.placeType ?? 1
 	}
 	
 	var placeAddress: String {

@@ -25,6 +25,16 @@ class ListTabView: UIView {
 	var listTableView = UITableView()
 	var backgroundView = UIImageView(image: R.image.listBlankState())
 	
+	var editButton: UIBarButtonItem?
+	var collectionButton: UIBarButtonItem?
+	
+	var listTabViewController: ListTabViewController? {
+		didSet {
+			editButton = UIBarButtonItem(title: R.string.localizable.edit(), style: .plain, target: listTabViewController, action: #selector(ListTabViewController.editButtonDidPress))
+			collectionButton = UIBarButtonItem(title: R.string.localizable.collections(), style: .plain, target: listTabViewController, action: #selector(ListTabViewController.collectionsDidPress))
+		}
+	}
+	
 	// MARK: - Configure View
 	private func configureUIModifications() {
 		
