@@ -14,12 +14,11 @@ I've added the main files for the two views below. The rest of the code is locat
 ### Scalability
 * *Firestore (NoSQL)* 
     * Chosen over Core Data as the primary database so that i) the app occupies less memory on the user device and ii) user data is accessible and editable across devices 
-* *MVC architecture*
+* *MVVM architecture*
 
 ### Maintainability
-* *90% Programmatic UI + Autolayout*
-* *10% Storyboard*
-* *MVC architecture*
+* *Programmatic UI + Autolayout*
+* *MVVM architecture*
 * *Git*
 * *Cocoapods*
 * *Unit tests*
