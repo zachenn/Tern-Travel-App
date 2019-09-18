@@ -9,7 +9,7 @@ I've added the main files for the two views below. The rest of the code is locat
 
 ## Selected Tools, Frameworks, and Design Patterns 
 
-<!-- (memory management, security), optionals, HTTP Requests --> 
+<!-- (memory management, security, HTTP Requests), optionals, Concurrency --> 
   
 ### Scalability
 * *Firestore (NoSQL)* 
